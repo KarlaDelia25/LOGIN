@@ -3,6 +3,7 @@ package Vista;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
@@ -23,7 +24,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Toolkit;
 
-public class vUsuario extends JFrame {
+public class vUsuario extends JInternalFrame {
 
 	private JPanel NOMBRE;
 	private JLabel lblId;
@@ -55,14 +56,14 @@ public class vUsuario extends JFrame {
 	}
 
 	public vUsuario() {
-		setLocationRelativeTo(null);
-		setIconImage(Toolkit.getDefaultToolkit().getImage(vUsuario.class.getResource("/img/Ying.jpg")));
+		//setLocationRelativeTo(null);
+		//setIconImage(Toolkit.getDefaultToolkit().getImage(vUsuario.class.getResource("/img/Ying.jpg")));
 		setTitle("USUARIO");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		NOMBRE = new JPanel();
 		NOMBRE.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setLocationRelativeTo(null);
+		//setLocationRelativeTo(null);
 
 		setContentPane(NOMBRE);
 		NOMBRE.setLayout(null);

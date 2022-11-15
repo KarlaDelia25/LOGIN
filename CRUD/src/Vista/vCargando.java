@@ -40,9 +40,10 @@ public class vCargando extends JFrame {
 						e.printStackTrace();
 					}
 					if (i == 100) {
-						JOptionPane.showMessageDialog(null, "YA TERMINIIIII");
-						System.exit(0);
-					}
+						setVisible(false);
+						vPrincipal p =new vPrincipal();	
+						p.setVisible(true);
+						}
 				}
 
 			}
