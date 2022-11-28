@@ -126,7 +126,7 @@ public class vLogin extends JFrame {
 
 		lblNewLabel_1 = new JLabel("New label");
 		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\ALUMNO\\Downloads\\motito.png"));
-		lblNewLabel_1.setBounds(397, 0, 472, 313);
+		lblNewLabel_1.setBounds(376, 48, 371, 237);
 		contentPane.add(lblNewLabel_1);
 	}
 }
