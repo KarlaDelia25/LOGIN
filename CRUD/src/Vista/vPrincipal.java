@@ -15,6 +15,11 @@ import javax.swing.JToolBar;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.SystemColor;
+import javax.swing.border.MatteBorder;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class vPrincipal extends JFrame {
 	private JDesktopPane desktopPane;
@@ -51,20 +56,25 @@ public class vPrincipal extends JFrame {
 		contentPane.setLayout(null);
 
 		menuBar = new JMenuBar();
+		menuBar.setForeground(SystemColor.desktop);
+		menuBar.setFont(new Font("Stencil", Font.PLAIN, 13));
 		menuBar.setBounds(0, 0, 1306, 22);
 		contentPane.add(menuBar);
 
 		JMenu mnNewMenu = new JMenu("CRUDS");
+		mnNewMenu.setBorder(new MatteBorder(4, 4, 4, 4, (Color) new Color(0, 0, 0)));
 		menuBar.add(mnNewMenu);
 
 		JMenuItem mntmNewMenuItem = new JMenuItem("USUARIO");
 		mnNewMenu.add(mntmNewMenuItem);
 
 		JToolBar toolBar = new JToolBar();
+		toolBar.setFont(new Font("Stencil", Font.PLAIN, 13));
 		toolBar.setBounds(0, 22, 424, 28);
 		contentPane.add(toolBar);
 
 		btnNewButton = new JButton("CRUD USUARIOS");
+		btnNewButton.setBorder(new MatteBorder(4, 4, 4, 6, (Color) new Color(0, 0, 0)));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Usuario.setVisible(true);
@@ -74,6 +84,7 @@ public class vPrincipal extends JFrame {
 		toolBar.add(btnNewButton);
 
 		desktopPane = new JDesktopPane();
+		desktopPane.setBorder(new LineBorder(new Color(0, 0, 0), 5));
 		desktopPane.setBounds(0, 53, 408, 221);
 		desktopPane.setSize((int) ancho, (int) alto);
 		contentPane.add(desktopPane);

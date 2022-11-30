@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JProgressBar;
 import java.awt.Font;
+import java.awt.SystemColor;
 
 public class vCargando extends JFrame {
 
@@ -64,6 +65,7 @@ public class vCargando extends JFrame {
 		contentPane.setLayout(null);
 
 		barCargando = new JProgressBar();
+		barCargando.setForeground(SystemColor.desktop);
 		barCargando.setStringPainted(true);
 		barCargando.setFont(new Font("Tw Cen MT Condensed", Font.PLAIN, 19));
 		barCargando.setBounds(0, 0, 658, 129);

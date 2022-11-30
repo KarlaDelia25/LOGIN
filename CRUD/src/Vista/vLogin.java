@@ -21,6 +21,8 @@ import javax.swing.JPasswordField;
 import javax.swing.ImageIcon;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
+import java.awt.Color;
 
 public class vLogin extends JFrame {
 
@@ -49,6 +51,7 @@ public class vLogin extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 869, 313);
 		contentPane = new JPanel();
+		contentPane.setBackground(SystemColor.activeCaptionText);
 		this.setUndecorated(true);
 		this.setLocationRelativeTo(null);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -57,16 +60,21 @@ public class vLogin extends JFrame {
 		contentPane.setLayout(null);
 
 		JLabel lblNewLabel = new JLabel("Usuario");
+		lblNewLabel.setForeground(SystemColor.text);
 		lblNewLabel.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		lblNewLabel.setBounds(51, 22, 72, 38);
 		contentPane.add(lblNewLabel);
 
 		JLabel lblPassword = new JLabel("Password");
+		lblPassword.setForeground(SystemColor.text);
 		lblPassword.setFont(new Font("Times New Roman", Font.PLAIN, 18));
 		lblPassword.setBounds(51, 107, 72, 38);
 		contentPane.add(lblPassword);
 
 		btnEntrar = new JButton("Entrar");
+		btnEntrar.setBackground(SystemColor.activeCaptionText);
+		btnEntrar.setIcon(null);
+		btnEntrar.setForeground(SystemColor.inactiveCaptionBorder);
 		btnEntrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Usuario user = new Usuario();
@@ -89,6 +97,8 @@ public class vLogin extends JFrame {
 		contentPane.add(btnEntrar);
 
 		btnCancelar = new JButton("Cancelar");
+		btnCancelar.setBackground(SystemColor.desktop);
+		btnCancelar.setForeground(SystemColor.inactiveCaptionBorder);
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JOptionPane.showMessageDialog(null, "ADIOSITO");
@@ -100,6 +110,7 @@ public class vLogin extends JFrame {
 		contentPane.add(btnCancelar);
 
 		txtPassword = new JPasswordField();
+		txtPassword.setForeground(new Color(0, 102, 153));
 		txtPassword.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -112,6 +123,7 @@ public class vLogin extends JFrame {
 		contentPane.add(txtPassword);
 
 		txtUser = new JTextField();
+		txtUser.setForeground(new Color(0, 128, 128));
 		txtUser.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent e) {
@@ -125,8 +137,8 @@ public class vLogin extends JFrame {
 		txtUser.setColumns(10);
 
 		lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\ALUMNO\\Downloads\\motito.png"));
-		lblNewLabel_1.setBounds(376, 48, 371, 237);
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\Alumnos\\Pictures\\Nicky.png"));
+		lblNewLabel_1.setBounds(362, 48, 483, 237);
 		contentPane.add(lblNewLabel_1);
 	}
 }

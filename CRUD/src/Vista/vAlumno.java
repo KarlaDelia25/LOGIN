@@ -1,6 +1,7 @@
 package Vista;
 
 import java.awt.EventQueue;
+import java.awt.Image;
 
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -16,12 +17,15 @@ import javax.swing.table.DefaultTableModel;
 import Dao.DaoUsuario;
 import Modelo.Usuario;
 
+import javax.lang.model.element.Element;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.awt.Toolkit;
 
 public class vAlumno extends JInternalFrame {
@@ -41,6 +45,7 @@ public class vAlumno extends JInternalFrame {
 	ArrayList<Usuario> lista = new ArrayList<Usuario>();
 	private JTable tblUsuario;
 	Usuario usuario = new Usuario();
+	private JButton btnPDF;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -56,14 +61,14 @@ public class vAlumno extends JInternalFrame {
 	}
 
 	public vAlumno() {
-		//setLocationRelativeTo(null);
-		//setIconImage(Toolkit.getDefaultToolkit().getImage(vUsuario.class.getResource("/img/Ying.jpg")));
+//setLocationRelativeTo(null);
+//setIconImage(Toolkit.getDefaultToolkit().getImage(vUsuario.class.getResource("/img/Ying.jpg")));
 		setTitle("USUARIO");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		NOMBRE = new JPanel();
 		NOMBRE.setBorder(new EmptyBorder(5, 5, 5, 5));
-		//setLocationRelativeTo(null);
+//setLocationRelativeTo(null);
 
 		setContentPane(NOMBRE);
 		NOMBRE.setLayout(null);
@@ -211,6 +216,83 @@ public class vAlumno extends JInternalFrame {
 		});
 		btnBorrar.setBounds(233, 112, 89, 23);
 		NOMBRE.add(btnBorrar);
+		
+		btnPDF = new JButton("PDF");
+		btnPDF.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+					FileOutputStream archivo;
+					File file = new File("C:\\Users\\Alumno.SALA2-PC35\\git\\Proyectofilan\\Proyectofinal\\src\\PDF\\reporte.pdf");
+					archivo = new FileOutputStream(file);
+					Document doc = new Document();
+					PdfWriter.getInstance(doc, archivo);
+					doc.open();
+					Image img = Image.getInstance("C:\\Users\\Alumno.SALA2-PC35\\git\\Proyectofilan\\Proyectofinal\\src\\Img\\icono.jpg");
+					img.setAlignment(Element.ALIGN_CENTER);
+					           img.scaleToFit(200, 200);
+					doc.add(img);
+					Paragraph p = new Paragraph(10);
+					com.itextpdf.text.Font negrita = new com.itextpdf.text.Font(com.itextpdf.text.Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD, BaseColor.BLACK);
+					p.add(Chunk.NEWLINE);
+					p.add("Cliente");
+					p.add(Chunk.NEWLINE);
+					p.add(Chunk.NEWLINE);
+					p.setAlignment(Element.ALIGN_CENTER);
+					doc.add(p);
+					PdfPTable tabla = new PdfPTable(4);
+					tabla.setWidthPercentage(100);
+					PdfPCell c1 = new PdfPCell(new Phrase(" IdAlumno", negrita));
+					PdfPCell c2 = new PdfPCell(new Phrase(" Domicilio", negrita));
+					PdfPCell c3 = new PdfPCell(new Phrase(" Telefono", negrita));
+					PdfPCell c4 = new PdfPCell(new Phrase(" Nombre", negrita));
+					c1.setHorizontalAlignment(Element.ALIGN_CENTER);
+					c2.setHorizontalAlignment(Element.ALIGN_CENTER);
+					c3.setHorizontalAlignment(Element.ALIGN_CENTER);
+					c4.setHorizontalAlignment(Element.ALIGN_CENTER);
+					c1.setBackgroundColor(BaseColor.LIGHT_GRAY);
+					c2.setBackgroundColor(BaseColor.LIGHT_GRAY);
+					c3.setBackgroundColor(BaseColor.LIGHT_GRAY);
+					c4.setBackgroundColor(BaseColor.LIGHT_GRAY);
+					tabla.addCell(c1);
+					tabla.addCell(c2);
+					tabla.addCell(c3);
+					tabla.addCell(c4);
+
+					for (Cliente u : lista) {
+					tabla.addCell("" + u.getIdcliente());
+					tabla.addCell("" + u.getDomicilio());
+					tabla.addCell("" + u.getTelefono());
+					tabla.addCell("" + u.getNombre());
+
+					}
+
+					doc.add(tabla);
+					Paragraph p1 = new Paragraph(10);
+					p1.add(Chunk.NEWLINE);
+					p1.add("NÚMERO DE REGISTRO " + lista.size());
+					p1.add(Chunk.NEWLINE);
+					p1.add(Chunk.NEWLINE);
+					p1.setAlignment(Element.ALIGN_RIGHT);
+					doc.add(p1);
+					doc.close();
+					archivo.close();
+					Desktop.getDesktop().open(file);
+					} catch (FileNotFoundException e1) {
+					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "ERROR AL CREAR ARCHIVO");
+					} catch (DocumentException e1) {
+					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "ERROR AL CREAR DOCUMENTO PDF");
+					} catch (IOException e1) {
+					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, "ERROR AL CREAR IO");
+					}
+					}
+					});
+
+		
+		btnPDF.setBounds(332, 52, 89, 23);
+		NOMBRE.add(btnPDF);
 
 		modelo.addColumn("ID");
 		modelo.addColumn("USERS");
